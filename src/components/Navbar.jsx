@@ -1,8 +1,20 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; // For routing (if using React Router)
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo-home512.png";
+import "../styles/nav.css"
+
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -10,12 +22,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      {/* Logo */}
+    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-logo">
         <Link to="/" className="logo-link">
           <img
-            src={logo} // Replace with your logo path
+            src={logo}
             alt="Deepfake Detection Logo"
             className="logo"
           />
@@ -23,16 +34,16 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Mobile Menu Toggle Button */}
       <div
         className={`mobile-menu-toggle ${isMobileMenuOpen ? "open" : ""}`}
-        onClick={toggleMobileMenu}>
+        onClick={toggleMobileMenu}
+        aria-label="Toggle mobile menu"
+      >
         <span className="bar"></span>
         <span className="bar"></span>
         <span className="bar"></span>
       </div>
 
-      {/* Navigation Links */}
       <ul className={`navbar-links ${isMobileMenuOpen ? "active" : ""}`}>
         <li>
           <Link to="/" onClick={toggleMobileMenu}>
@@ -65,13 +76,6 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-
-      {/* Desktop CTA button */}
-      {/* <div className="navbar-cta desktop-only">
-        <Link to="/detect" className="cta-button">
-          Get Started
-        </Link>
-      </div> */}
     </nav>
   );
 };

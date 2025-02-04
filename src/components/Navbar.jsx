@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // For routing (if using React Router)
-import logo from "../logo-home512.png";
+import logo from "../assets/logo-home512.png";
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
+    document.body.classList.toggle("menu-open");
   };
 
   return (
@@ -23,10 +24,12 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu Toggle Button */}
-      <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
-        <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
-        <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
-        <span className={`bar ${isMobileMenuOpen ? "open" : ""}`}></span>
+      <div
+        className={`mobile-menu-toggle ${isMobileMenuOpen ? "open" : ""}`}
+        onClick={toggleMobileMenu}>
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
       </div>
 
       {/* Navigation Links */}
@@ -37,33 +40,38 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/detect" onClick={toggleMobileMenu}>
-            Detect Deepfake
+          <Link to="/deepfake-news" onClick={toggleMobileMenu}>
+            Deepfake News
           </Link>
         </li>
         <li>
-          <Link to="/about" onClick={toggleMobileMenu}>
-            About Us
+          <Link to="/detected-deepfakes" onClick={toggleMobileMenu}>
+            Detected Deepfakes
           </Link>
         </li>
         <li>
-          <Link to="/how-it-works" onClick={toggleMobileMenu}>
-            How It Works
+          <Link to="/about-us" onClick={toggleMobileMenu}>
+            About
           </Link>
         </li>
         <li>
-          <Link to="/contact" onClick={toggleMobileMenu}>
+          <Link to="/contact-us" onClick={toggleMobileMenu}>
             Contact
+          </Link>
+        </li>
+        <li className="navbar-cta">
+          <Link to="/detect" className="cta-button" onClick={toggleMobileMenu}>
+            Get Started
           </Link>
         </li>
       </ul>
 
-      {/* Call-to-Action Button */}
-      <div className="navbar-cta">
-        <Link to="/get-started" className="cta-button">
+      {/* Desktop CTA button */}
+      {/* <div className="navbar-cta desktop-only">
+        <Link to="/detect" className="cta-button">
           Get Started
         </Link>
-      </div>
+      </div> */}
     </nav>
   );
 };

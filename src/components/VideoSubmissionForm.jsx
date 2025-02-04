@@ -68,6 +68,71 @@ const VideoSubmissionForm = () => {
   };
 
   return (
+    // <div
+    //   className="video-submission-container"
+    //   style={{
+    //     backgroundImage:
+    //       "url('https://tse2.mm.bing.net/th?id=OIP.OCq4qZF7foUZfIKJDglCzQHaE7&pid=Api')",
+    //   }}>
+    //   {/* <div className="video-submission-form">
+    //     <h2 className="form-title">Upload Your Video</h2>
+    //     <form onSubmit={handleSubmit}>
+    //       <div className="form-group">
+    //         <label htmlFor="video" className="form-label">
+    //           Upload Video (Max 1 Minute, 10MB)
+    //         </label>
+    //         <input
+    //           type="file"
+    //           id="video"
+    //           accept="video/*"
+    //           onChange={handleVideoChange}
+    //           className="file-input"
+    //         />
+    //       </div>
+
+    //       {error && <p className="error-message">{error}</p>}
+
+    //       <button type="submit" className="submit-button" disabled={!videoFile}>
+    //         Submit Video
+    //       </button>
+    //     </form>
+    //   </div> */}
+    //   <div className="video-submission-form">
+    //     <h2 className="form-title">Upload Your Video</h2>
+    //     <form onSubmit={handleSubmit}>
+    //       <div className="form-group">
+    //         <label htmlFor="video" className="form-label">
+    //           Upload Video (Max 1 Minute, 10MB)
+    //         </label>
+    //         <div className="file-input-wrapper">
+    //           <button
+    //             type="button"
+    //             className="custom-file-button"
+    //             onClick={() => document.getElementById("video").click()}>
+    //             Choose File
+    //           </button>
+    //           <span className="file-name">
+    //             {videoFile?.name || "No file chosen"}
+    //           </span>
+    //           <input
+    //             type="file"
+    //             id="video"
+    //             accept="video/*"
+    //             onChange={handleVideoChange}
+    //             className="file-input"
+    //             ref={fileInputRef}
+    //           />
+    //         </div>
+    //       </div>
+
+    //       {error && <p className="error-message">{error}</p>}
+
+    //       <button type="submit" className="submit-button" disabled={!videoFile}>
+    //         Submit Video
+    //       </button>
+    //     </form>
+    //   </div>
+    // </div>
     <div
       className="video-submission-container"
       style={{
